@@ -1,14 +1,14 @@
-﻿<section id="header">
+﻿<section id="header" style="position:relative;">
     <a asp-controller="Home" asp-action="Index"><img src="~/assets/img/logo.png" class="logo" alt=""></a>
     <div>
         <ul id="navbar">
             <li>
-                @*<div class="form">
-                    <input class="search-area" type="text" placeholder="Search from here!">
-                </div>*@
-                <div class="header-right ">
+                <div class="header-right " >
                     <div class="input form">
-                        <input  type="text" class="search-name search-area" id="searchinp" placeholder="Search...">
+                        <input type="text" class="search-name search-area" id="searchinp" placeholder="Search...">
+                    </div>
+                    <div class="search-list" style="padding:0;">
+                        <ul class="d-block search-list-p" id="searchList"></ul>
                     </div>
                 </div>
             </li>
@@ -44,16 +44,14 @@
 
 </section>
 <div class="container">
-    <div class="search-list">
-        <ul class="d-block search-list-p" id="searchList"></ul>
-    </div>
+   
 </div>
 
 <style>
 
 
     .search-list {
-
+       padding:0 !important;
     }
 
     .search-list-p {
@@ -63,6 +61,5 @@
     .search-nameli {
         list-style: none;
         display: flex;
-        padding-top: 5px !important;
     }
 </style>
