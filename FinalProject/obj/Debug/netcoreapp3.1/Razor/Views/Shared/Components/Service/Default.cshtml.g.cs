@@ -47,8 +47,15 @@ using FinalProject.ViewModels.Account;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\ASUS\Desktop\Projects\FinalProject\FinalProject\Views\_ViewImports.cshtml"
+using FinalProject.ViewModels.Basket;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d4326bbd14296dce1514893be0008f367b8cb83a", @"/Views/Shared/Components/Service/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"55ddb399b251d23de1ca227d0880e78528225c4b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"001c5272ec52ac5cfee52c119643cb31b9d72b75", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_Service_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Service>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString(""), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,7 +93,7 @@ using FinalProject.ViewModels.Account;
 #line hidden
 #nullable disable
             WriteLiteral("        <div class=\"fe-box\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "d4326bbd14296dce1514893be0008f367b8cb83a4511", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "d4326bbd14296dce1514893be0008f367b8cb83a4713", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

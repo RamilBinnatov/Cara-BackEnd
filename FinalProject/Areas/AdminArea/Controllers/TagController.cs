@@ -1,7 +1,9 @@
 ﻿using FinalProject.Data;
 using FinalProject.Helpers;
+using FinalProject.Helpers.Enums;
 using FinalProject.Models;
 using FinalProject.ViewModels.Tag;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +15,7 @@ using System.Threading.Tasks;
 namespace FinalProject.Areas.AdminArea.Controllers
 {
     [Area("Adminarea")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class TagController : Controller
     {
         #region readonly

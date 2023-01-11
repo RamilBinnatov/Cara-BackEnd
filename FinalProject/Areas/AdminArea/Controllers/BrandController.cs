@@ -1,18 +1,22 @@
 ﻿using FinalProject.Data;
 using FinalProject.Helpers;
+using FinalProject.Helpers.Enums;
 using FinalProject.Models;
 using FinalProject.ViewModels.Brand;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace FinalProject.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class BrandController : Controller
     {
         #region readonly

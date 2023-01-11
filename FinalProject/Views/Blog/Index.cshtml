@@ -28,10 +28,7 @@
                 </div>
                 <div class="blog-details">
                     <h4>@item.Title</h4>
-                    <p>
-                        @item.Content
-                    </p>
-                    <a href="#">CONTINUE READING</a>
+                    <a asp-controller="BlogDetail" asp-action="index" asp-route-id="@item.Id">CONTINUE READING</a>
                 </div>
                 <h1>@item.CreateDate.ToString("dd/MM/yyyy")</h1>
             </div>

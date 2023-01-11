@@ -37,12 +37,12 @@ namespace FinalProject.Controllers
 
         #endregion
 
-
+        #region Login
         public IActionResult Login()
         {
             return View();
         }
-
+        #endregion
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVM loginVM)

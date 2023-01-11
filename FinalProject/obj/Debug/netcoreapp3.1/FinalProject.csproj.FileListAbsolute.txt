@@ -222,3 +222,6 @@ C:\Users\ASUS\Desktop\Projects\FinalProject\FinalProject\obj\Debug\netcoreapp3.1
 C:\Users\ASUS\Desktop\Projects\FinalProject\FinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
 C:\Users\ASUS\Desktop\Projects\FinalProject\FinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\VerifyEmail.cshtml.g.cs
 C:\Users\ASUS\Desktop\Projects\FinalProject\FinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Basket\Index.cshtml.g.cs
+C:\Users\ASUS\Desktop\Projects\FinalProject\FinalProject\obj\Debug\netcoreapp3.1\Razor\Views\BlogDetail\Index.cshtml.g.cs
+C:\Users\ASUS\Desktop\Projects\FinalProject\FinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Header\Default.cshtml.g.cs
+C:\Users\ASUS\Desktop\Projects\FinalProject\FinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Search.cshtml.g.cs

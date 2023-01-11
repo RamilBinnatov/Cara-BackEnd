@@ -1,7 +1,9 @@
 ﻿using FinalProject.Data;
 using FinalProject.Helpers;
+using FinalProject.Helpers.Enums;
 using FinalProject.Models;
 using FinalProject.ViewModels.Blog;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,6 +16,7 @@ using System.Threading.Tasks;
 namespace FinalProject.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class BlogController : Controller
     {
         #region Readonly
@@ -73,6 +76,7 @@ namespace FinalProject.Areas.AdminArea.Controllers
         {
             ViewBag.categories = await GetCategoriesAsync();
 
+
             if (!ModelState.IsValid)
             {
                 return View(blog);
@@ -130,7 +134,6 @@ namespace FinalProject.Areas.AdminArea.Controllers
 
             await _context.SaveChangesAsync();
 
-            // Product dbProduct = await _context.Products.FirstOrDefaultAsync(m => m.Id == 1);
 
             foreach (var item in blog.Tag.Where(m => m.IsSelected))
             {
@@ -304,11 +307,7 @@ namespace FinalProject.Areas.AdminArea.Controllers
                 }
 
                 images.FirstOrDefault().IsMain = true;
-
-
             }
-
-
 
 
             dbBlog.Title = updadetBlog.Title;
@@ -365,7 +364,7 @@ namespace FinalProject.Areas.AdminArea.Controllers
 
         private async Task<int> GetPageCount(int take)
         {
-            int blogCount = await _context.BlogCategories.Where(m => !m.IsDeleted).CountAsync();
+            int blogCount = await _context.Blogs.Where(m => !m.IsDeleted).CountAsync();
 
             return (int)Math.Ceiling((decimal)blogCount / take);
         }

@@ -2,9 +2,11 @@
 using FinalProject.Models;
 using FinalProject.Services;
 using FinalProject.ViewModels;
+using FinalProject.ViewModels.Basket;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,6 +29,8 @@ namespace FinalProject.Controllers
             _layoutService = layoutService;
         }
         #endregion
+
+        #region Index
         public async Task<IActionResult> Index()
         {
             Dictionary<string, string> settingDatas = await _layoutService.GetDatasFromSetting();
@@ -77,7 +81,74 @@ namespace FinalProject.Controllers
 
             return View(model);
         }
+        #endregion
+
+        #region Basket
+        [HttpPost]
+        public async Task<IActionResult> AddBasket(int? id)
+        {
+            if (id is null) return BadRequest();
+
+            var dbProduct = await GetProductById(id);
+
+            if (dbProduct == null) return NotFound();
+
+            List<BasketVM> basket = GetBasket();
+
+            UpdateBasket(basket, dbProduct.Id);
+
+            Response.Cookies.Append("basket", JsonConvert.SerializeObject(basket));
+
+            return RedirectToAction("Index");
+        }
+
+        private void UpdateBasket(List<BasketVM> basket, int id)
+        {
+            BasketVM existProduct = basket.FirstOrDefault(m => m.Id == id);
+
+            if (existProduct == null)
+            {
+                basket.Add(new BasketVM
+                {
+                    Id = id,
+                    Count = 1
+                });
+            }
+            else
+            {
+                existProduct.Count++;
+            }
+        }
+
+        private async Task<Product> GetProductById(int? id)
+        {
+            return await _context.Products.FindAsync(id);
+        }
 
 
+        private List<BasketVM> GetBasket()
+        {
+            List<BasketVM> basket;
+
+            if (Request.Cookies["basket"] != null)
+            {
+                basket = JsonConvert.DeserializeObject<List<BasketVM>>(Request.Cookies["basket"]);
+            }
+            else
+            {
+                basket = new List<BasketVM>();
+            }
+
+            return basket;
+        }
+        #endregion
+
+        #region Search
+        public IActionResult Search(string search)
+        {
+            List<Product> searchName = _context.Products.Where(s => !s.IsDeleted && s.Title.Trim().Contains(search.Trim())).Include(m => m.ProductImages).ToList();
+            return PartialView("_Search", searchName);
+        }
+        #endregion
     }
 }

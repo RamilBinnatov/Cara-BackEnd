@@ -23,7 +23,7 @@
         {
             @foreach (var Product in item.Products)
             {
-                <div class="pro" onclick="window.location.href='product-detail.html'">
+                <div class="pro godzilla" id="@Product.Id">
                     <a asp-controller="shopdetail" asp-action="index" asp-route-id="@Product.Id">
                         <img src="~/assets/img/products/@Product.ProductImages.FirstOrDefault(m=>m.IsMain)?.Image" alt="">
                     </a>
@@ -39,7 +39,7 @@
                         </div>
                         <h4>$@Product.Price</h4>
                     </div>
-                    <a href="#"><i class="ri-shopping-cart-2-line cart"></i></a>
+                    <a class="salam12321"><i class="ri-shopping-cart-2-line cart"></i></a>
                 </div>
 
             }
@@ -56,3 +56,11 @@
     }
 
 </section>
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" integrity="sha512-x+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+
+}

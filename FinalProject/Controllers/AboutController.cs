@@ -26,6 +26,8 @@ namespace FinalProject.Controllers
             _env = env;
         }
         #endregion
+
+        #region Index
         public async Task<IActionResult> Index()
         {
             AboutUs aboutUs = await _context.AboutUs
@@ -47,8 +49,7 @@ namespace FinalProject.Controllers
 
             return View(model);
         }
-
-
+        #endregion
 
     }
 }

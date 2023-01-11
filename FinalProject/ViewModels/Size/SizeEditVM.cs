@@ -8,6 +8,5 @@ namespace FinalProject.ViewModels.Size
     public class SizeEditVM
     {
         public string Name { get; set; }
-
     }
 }

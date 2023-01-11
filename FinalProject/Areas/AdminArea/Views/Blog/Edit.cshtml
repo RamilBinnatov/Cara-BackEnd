@@ -9,15 +9,8 @@
     <h3>Blog</h3>
     <div class="card my-2">
         <div class="d-flex">
-            @foreach (var item in Model.Images)
-            {
-
-                <div class="blog-post-item " style="margin-right:10px">
-                    <div class="blog-thumb " style="width:150px" ;>
-                        <img src="~/assets/img/blog/@item.Image">
-                    </div>
-                </div>
-            }
+            <div class="blog-post-item " style="margin-right:10px">
+            </div>
         </div>
     </div>
     <form asp-action="Edit" method="post" enctype="multipart/form-data">

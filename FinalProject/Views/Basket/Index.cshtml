@@ -1,4 +1,13 @@
-﻿<section id="page-header" class="about-header" @*style="background-image: url('~/assets/img/banner/b10.jpg')*@>
+﻿@model List<BasketDetailVM>
+
+@{
+    ViewData["Title"] = "Index";
+
+    decimal endTotal = 0;
+}
+
+
+<section id="page-header" class="about-header" style="background-image: url(../assets/img/about/banner.png); ">
     <h2>#Lets Buy</h2>
     <p>Buy, buy, buy</p>
 </section>
@@ -7,7 +16,7 @@
     <table width="100%">
         <thead>
             <tr>
-                
+
                 <td>Remove</td>
                 <td>Image</td>
                 <td>Product</td>
@@ -17,33 +26,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><a href="#"><i class="ri-close-circle-line"></i></a></td>
-                <td><img src="~/assets/img/products/f1.jpg" alt=""></td>
-                <td>Cartoon Buta Koynek</td>
-                <td>$118.90</td>
-                <td><input type="number"></td>
-                <td>$118.90</td>
 
-            </tr>
-            <tr>
-                <td><a href="#"><i class="ri-close-circle-line"></i></a></td>
-                <td><img src="img/products/f3.jpg" alt=""></td>
-                <td>Cartoon Buta Koynek</td>
-                <td>$118.90</td>
-                <td><input type="number"></td>
-                <td>$118.90</td>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><a asp-controller="Basket" asp-action="RemoveFromCart" asp-route-id="@item.Id"><i class="ri-close-circle-line"></i></a></td>
+                    <td><img src="~/assets/img/products/@item.Image" alt=""></td>
+                    <td>@item.Title</td>
+                    <td>$@((item.Price.ToString("##.00")))</td>
+                    <td><input type="number" value="@item.Count"></td>
+                    <td>@(item.Price * item.Count)</td>
+                </tr>
+                endTotal = endTotal + item.Total;
+            }
 
-            </tr>
-            <tr>
-                <td><a href="#"><i class="ri-close-circle-line"></i></a></td>
-                <td><img src="img/products/f2.jpg" alt=""></td>
-                <td>Cartoon Buta Koynek</td>
-                <td>$118.90</td>
-                <td><input type="number"></td>
-                <td>$118.90</td>
-
-            </tr>
 
         </tbody>
     </table>
@@ -73,7 +69,7 @@
             </tr>
             <tr>
                 <td><strong>Total</strong></td>
-                <td><strong>$335</strong></td>
+                <td><strong>$@endTotal</strong></td>
             </tr>
         </table>
         <button class="normal">Proceed to Checkout</button>
