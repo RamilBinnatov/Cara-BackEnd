@@ -34,7 +34,6 @@ namespace FinalProject.Controllers
         public async Task<IActionResult> Index()
         {
             Dictionary<string, string> settingDatas = await _layoutService.GetDatasFromSetting();
-            int homeTakeProduct = int.Parse(settingDatas["HomeTakeProduct"]);
 
             IEnumerable<Banner> banners = await _context.Banners
                 .Where(m => !m.IsDeleted)
@@ -58,7 +57,7 @@ namespace FinalProject.Controllers
                 .Include(m => m.ProductCategory)
                 .Include(m => m.ProductImages)
                 .Include(m => m.Brand)
-                .Take(homeTakeProduct)
+                .Take(4)
                 .ToListAsync();
             IEnumerable<Product> newArrivals = await _context.Products
                 .Where(m => !m.IsDeleted)
@@ -66,7 +65,7 @@ namespace FinalProject.Controllers
                 .Include(m => m.ProductCategory)
                 .Include(m => m.ProductImages)
                 .Include(m => m.Brand)
-                .Take(homeTakeProduct)
+                .Take(4)
                 .ToListAsync();
 
             HomeVM model = new HomeVM
