@@ -128,6 +128,8 @@ namespace FinalProject.Areas.AdminArea.Controllers
                 CreateDate = DateTime.Now,
                 BlogCategoryId = blog.CategoryId,
                 BlogImage = images,
+                Creator = User.Identity.Name
+                
             };
 
             await _context.Blogs.AddAsync(newBlog);

@@ -31,7 +31,7 @@ namespace FinalProject.Data
         public DbSet<Tag> Tags { get; set; }
         public DbSet<BlogTag> BlogTags { get; set; }
         public DbSet<BlogCategory> BlogCategories { get; set; }
-
-
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketProduct> BasketProducts { get; set; }
     }
 }

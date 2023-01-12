@@ -11,5 +11,6 @@ namespace FinalProject.Models
         public string FullName { get; set; }
         public bool isActive { get; set; } = false;
         public char FirstName { get; internal set; }
+        public Basket Basket { get; set; }
     }
 }

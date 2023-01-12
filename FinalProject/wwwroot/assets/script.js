@@ -45,28 +45,28 @@ let button = document.getElementById("search-button")
 //})
 
 
-$(document).on("click", ".salam12321", function () {
+//$(document).on("click", ".salam12321", function () {
 
-	let productId = parseInt($($(this).closest(".godzilla")[0]).attr('id'));
+//	let productId = parseInt($($(this).closest(".godzilla")[0]).attr('id'));
 
-	let data = { id: productId };
+//	let data = { id: productId };
     
-	$.ajax({
-		url: "/home/addbasket",
-		type: "POST",
-		data: data,
-		contentType: "application/x-www-form-urlencoded",
-		success: function (res) {
-			swal({
-				type: 'success',
-				title: 'Product added',
-				showConfirmButton: false,
-				timer: 1000
-			});
-		}
-	})
+//	$.ajax({
+//		url: "/home/addbasket",
+//		type: "POST",
+//		data: data,
+//		contentType: "application/x-www-form-urlencoded",
+//		success: function (res) {
+//			swal({
+//				type: 'success',
+//				title: 'Product added',
+//				showConfirmButton: false,
+//				timer: 1000
+//			});
+//		}
+//	})
 
-});
+//});
 
 $(function () {
 
@@ -82,5 +82,69 @@ $(function () {
 		});
 	});
 });
+
+
+/// basket start
+
+$(document).on("click", "#addToCart", function () {
+
+    let id = $(this).attr('cart-id');
+    let basketCount = $("#basketCount")
+    let basketCurrentCount = $("#basketCount").html()
+    $.ajax({
+        method: "POST",
+        url: "/basket/addbasket",
+        data: {
+            id: id
+        },
+        content: "application/x-www-from-urlencoded",
+        success: function (res) {
+			swal({
+				type: 'success',
+				title: 'Product added',
+				showConfirmButton: false,
+				timer: 1000
+			});
+            let scrollBasket = $('#basketCountsc');
+            let scrollBasketCount = $(scrollBasket).text();
+            scrollBasketCount++;
+            $(scrollBasket).text(scrollBasketCount);
+            basketCurrentCount++;
+            basketCount.html("")
+            basketCount.append(basketCurrentCount)
+        }
+
+
+    });
+
+});
+
+$(document).on('click', '#deleteBtn', function () {
+    var id = $(this).data('id')
+    var basketCount = $('#basketCount')
+    var basketCurrentCount = $('#basketCount').html()
+    var id = $(this).data('id');
+    var quantity = $(this).data('quantity')
+    var sum = basketCurrentCount - quantity
+
+
+    $.ajax({
+        method: 'POST',
+        url: "/basket/delete",
+        data: {
+            id: id
+        },
+        success: function (res) {
+
+            $(`.basket-product[id=${id}]`).remove();
+            basketCount.html("")
+            basketCount.append(sum)
+
+
+        }
+    })
+
+})
+// basket end
 
 

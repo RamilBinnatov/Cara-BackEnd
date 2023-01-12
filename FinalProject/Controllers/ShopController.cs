@@ -57,7 +57,6 @@ namespace FinalProject.Controllers
         {
             int productCount = await _context.Products.Where(m => !m.IsDeleted).CountAsync();
             return (int)Math.Ceiling((decimal)productCount / take);
-
         }
     }
 }

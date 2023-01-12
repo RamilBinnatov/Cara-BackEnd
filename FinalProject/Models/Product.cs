@@ -19,5 +19,6 @@ namespace FinalProject.Models
         public ICollection<ProductImage> ProductImages { get; set; }
         public ICollection<Product_Size> Product_Sizes { get; set; }
         public int SellingCount { get; set; }
+        public ICollection<BasketProduct> BasketProducts { get; set; }
     }
 }

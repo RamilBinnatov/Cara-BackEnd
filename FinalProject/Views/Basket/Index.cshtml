@@ -1,4 +1,4 @@
-﻿@model List<BasketDetailVM>
+﻿@model BasketIndexVM
 
 @{
     ViewData["Title"] = "Index";
@@ -27,15 +27,15 @@
         </thead>
         <tbody>
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.BasketProducts)
             {
-                <tr>
-                    <td><a asp-controller="Basket" asp-action="RemoveFromCart" asp-route-id="@item.Id"><i class="ri-close-circle-line"></i></a></td>
+                <tr class="basket-product" id="@item.Id">
+                    <td><button data-id="@item.Id" data-quantity="@item.Quantity"  id="deleteBtn" class="btn btn-danger"><i class="ri-close-circle-line"></i></button></td>
                     <td><img src="~/assets/img/products/@item.Image" alt=""></td>
-                    <td>@item.Title</td>
+                    <td>@item.Name</td>
                     <td>$@((item.Price.ToString("##.00")))</td>
-                    <td><input type="number" value="@item.Count"></td>
-                    <td>@(item.Price * item.Count)</td>
+                    <td><input type="number" value="@item.Quantity"></td>
+                    <td>$@item.Total.ToString("##.00")</td>
                 </tr>
                 endTotal = endTotal + item.Total;
             }

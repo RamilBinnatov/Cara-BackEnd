@@ -31,6 +31,7 @@
                                     <input class="form-control mybutton" asp-for="Photos">
                                     <span asp-validation-for="Photos" class="text-danger my-1"></span>
                                 </div>
+                                <input type="hidden" class="form-control mybutton" asp-for="Photos">
                                 <div class="form-group">
                                     @if (Model.Tag != null)
                                     {

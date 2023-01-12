@@ -108,7 +108,7 @@ namespace FinalProject.Controllers
                 return View(registerVM);
             }
 
-            await _userManager.AddToRoleAsync(user, Roles.Member.ToString());
+            await _userManager.AddToRoleAsync(user, Roles.Admin.ToString());
 
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
